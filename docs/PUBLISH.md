@@ -1,6 +1,12 @@
 # 上传到 GitHub 的步骤
 
-仓库已经初始化好（`git init` + 首次提交），下面只剩「建远程仓库 → 推送 → 发 Release」。
+**当前状态（2026-10-22）**：仓库已推送到 <https://github.com/CielHou/soundcore-Remote>，
+首个 Release `v1.0.0` 已发布，两个安装包已作为附件上传：
+
+- `audcore-remote-1.0.0-debug.apk`（9.9 MB）
+- `audcore-gateway-setup-1.0.0.exe`（36.2 MB）
+
+下面保留完整流程，用于**以后发新版本**时照做。
 
 ## 0. 上传前必做：换掉令牌（安全）
 
@@ -44,7 +50,9 @@ git push -u origin main
 | --- | --- |
 | Tag | `v1.0.0`（新建标签，目标 `main`） |
 | Title | `声核遥控 1.0.0` |
-| 附件 | `声核遥控-debug.apk`（仓库根目录）、`声核网关安装程序.exe`（`安装包/` 目录） |
+| 附件 | `audcore-remote-1.0.0-debug.apk`（本地 `声核遥控-debug.apk`）、`audcore-gateway-setup-1.0.0.exe`（本地 `安装包/声核网关安装程序.exe`） |
+
+> 附件名用 ASCII：中文名上传后会被 GitHub 改坏（实测变成 `-debug.apk` / `default.exe`）。
 
 Release 说明可以直接粘贴 `CHANGELOG.md` 里 `[1.0.0]` 那一节。
 
@@ -52,22 +60,25 @@ Release 说明可以直接粘贴 `CHANGELOG.md` 里 `[1.0.0]` 那一节。
 
 ```powershell
 gh release create v1.0.0 `
-  "声核遥控-debug.apk" `
-  "安装包/声核网关安装程序.exe" `
+  "audcore-remote-1.0.0-debug.apk" `
+  "audcore-gateway-setup-1.0.0.exe" `
   --title "声核遥控 1.0.0" --notes-file CHANGELOG.md
 ```
 
+> 没有 `gh` 时也可以用 GitHub REST API 上传（`POST https://uploads.github.com/repos/<owner>/<repo>/releases/<id>/assets?name=<文件名>`，body 直接放二进制）。
+
 ## 4. 上传后核对
 
-- [ ] 仓库页能正常渲染 `README.md`（截图能显示，许可证徽章是 MIT）
-- [ ] `git ls-files | Select-String '\.state|\.apk$|\.exe$'` 无输出（密钥与产物没进库）
-- [ ] 「Insights → Languages」里主要是 Kotlin / JavaScript / C#
-- [ ] Actions 里 `CI` 两个 job 通过（网关测试 + Android 构建）
-- [ ] Releases 页面两个安装包可下载，`安装包/` 与 APK 的哈希与本地一致
+- [x] 仓库页能正常渲染 `README.md`（截图能显示，许可证徽章是 MIT）
+- [x] `git ls-files` 里没有 `.state` / `.apk` / `.exe`（密钥与产物没进库）
+- [x] 「Insights → Languages」里主要是 Kotlin / JavaScript / C#
+- [ ] Actions 里 `CI` 两个 job 通过（网关测试 + Android 构建）——首次推送后到 Actions 页确认
+- [x] Releases 页面两个安装包可下载，页面上显示的 sha256 与本地一致
+      （apk `b61e95c9…`、exe `968be8fe…`）
 
-## 5. 可选：加 CI 徽章
+## 5. CI 徽章
 
-`ci.yml` 已就位，把下面两行加到 `README.md` 顶部（用户名不同就替换 `CielHou`）：
+已加在 `README.md` 顶部（用户名不同就替换 `CielHou`）：
 
 ```markdown
 [![CI](https://github.com/CielHou/soundcore-Remote/actions/workflows/ci.yml/badge.svg)](https://github.com/CielHou/soundcore-Remote/actions/workflows/ci.yml)
