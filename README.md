@@ -1,4 +1,4 @@
-# 声核遥控 · AudCore Remote
+# 声核遥控 · Soundcore Remote
 
 [![CI](https://github.com/CielHou/soundcore-Remote/actions/workflows/ci.yml/badge.svg)](https://github.com/CielHou/soundcore-Remote/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -6,9 +6,9 @@
 [![Node](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)]()
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)]()
 
-用手机遥控电脑上的「声核（AudCore）」调音台。
+用手机遥控电脑上的「声核」机架。
 
-声核官方只允许**电脑本机**连接它的 JSON WebSocket API（协议 v1），手机直接连会被 403 拒绝。
+声核只允许**电脑本机**连接它的 JSON WebSocket API（协议 v1），局域网直接连会被 403 拒绝。
 本项目由两部分组成：
 
 - **手机 App**（Kotlin / Android）：连接、实时同步通道列表、单通道静音、A/B 轨道一键互切、扫码连接、运行日志。
@@ -16,7 +16,7 @@
 
 ```text
 ┌────────────┐   ws://127.0.0.1:38533    ┌──────────────┐   ws://192.168.x.x:18533   ┌────────────┐
-│ 声核 AudCore│ ◀──────────────────────▶ │  电脑网关     │ ◀────────────────────────▶ │  手机 App   │
+│    声核     │ ◀──────────────────────▶ │  电脑网关     │ ◀────────────────────────▶ │  手机 App   │
 │  （本机）   │        JSON WS v1        │ 18533 / 18534 │        局域网 WebSocket     │   遥控      │
 └────────────┘                          └──────────────┘                            └────────────┘
 ```
@@ -54,7 +54,7 @@
 
 ### 1. 电脑端：装网关
 
-1. 打开声核（AudCore），确认它在监听 `127.0.0.1:38533`。
+1. 打开声核，确认它在监听 `127.0.0.1:38533`。
 2. 双击 `声核网关安装程序.exe` → 点「安装」。默认装到 `%LOCALAPPDATA%\AudcoreGateway`，不需要管理员权限。
 3. 安装完成后托盘出现「声核网关」，双击可打开控制面板；首次运行 `声核连接` 会显示「未连接」，点「打开状态页面」按提示授权一次即可。
 
