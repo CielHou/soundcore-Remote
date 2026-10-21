@@ -184,6 +184,6 @@ Windows 图标缓存问题：按 `F5` 刷新，或重新登录。安装包每次
 
 ## 许可证
 
-[MIT](LICENSE) © 2026 Ciel（微信：Apple_Hkc）
+[MIT](LICENSE) © 2026 Ciel
 
 版本历史见 [CHANGELOG.md](CHANGELOG.md)。
