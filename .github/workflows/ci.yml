@@ -18,7 +18,7 @@ jobs:
       run:
         working-directory: gateway
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -31,14 +31,27 @@ jobs:
     name: Android 构建与单元测试
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
-      - name: 安装 SDK 组件
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools"
+          cache: gradle
+      # runner 自带 Android SDK，这里只补装 SDK 35 组件并接受许可，
+      # 不用 android-actions/setup-android（它的 `sdkmanager tools` 在 cmdline-tools 16 上会报
+      # "Failed to find package 'tools'" 而让 job 失败）。
+      - name: 安装 Android SDK 组件
+        shell: bash
+        run: |
+          SDK_ROOT="${ANDROID_SDK_ROOT:-$ANDROID_HOME}"
+          echo "SDK_ROOT=$SDK_ROOT"
+          SDKM="$(command -v sdkmanager || true)"
+          if [ -z "$SDKM" ]; then
+            SDKM="$(find "$SDK_ROOT" -path '*/cmdline-tools/*/bin/sdkmanager' -type f 2>/dev/null | head -n 1)"
+          fi
+          echo "sdkmanager=$SDKM"
+          yes | "$SDKM" --licenses > /dev/null 2>&1 || true
+          "$SDKM" --install "platforms;android-35" "build-tools;35.0.0" "platform-tools"
       - name: 构建 Debug APK
         run: |
           chmod +x ./gradlew
