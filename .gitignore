@@ -1,0 +1,44 @@
+# ---------- Android / Gradle ----------
+.gradle/
+.kotlin/
+/build/
+/app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.iml
+/.idea/
+local.properties
+
+# ---------- 编译产物（走 GitHub Releases，不入库）----------
+*.apk
+*.aab
+*.exe
+/安装包/
+
+# ---------- 运行期数据与密钥 ----------
+/gateway/.state/
+/gateway/gateway.config.json
+/gateway/src/embedded-assets.js
+/gateway/publish/
+
+# ---------- 日志与临时文件 ----------
+*.log
+*.lock
+*.tmp
+
+# ---------- 开发过程中的截图与临时探针（保留 docs/images 下的正式截图）----------
+/*.png
+/*.json
+!/gateway/gateway.config.example.json
+/tray-qr.png
+/embedded-assets.generated.js
+/.workflow-one/
+
+# 正式文档截图必须入库
+!/docs/images/
+!/docs/images/*.png
+
+# ---------- .NET ----------
+bin/
+obj/

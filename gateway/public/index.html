@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>声核局域网网关</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="shell">
+        <header class="header">
+            <div>
+                <p class="eyebrow">AUDCORE LAN GATEWAY</p>
+                <h1>声核局域网网关</h1>
+                <p class="subtitle">本机授权连接与手机连接的双向状态</p>
+            </div>
+            <div class="refresh-state" id="refreshState">正在连接网关状态…</div>
+        </header>
+
+        <section class="link-summary">
+            <article class="link-card">
+                <div class="link-title">
+                    <span class="status-dot" id="audcoreDot"></span>
+                    <div>
+                        <strong>声核本机连接</strong>
+                        <small id="audcoreStatus">等待状态</small>
+                    </div>
+                </div>
+                <div class="link-meter"><span id="audcoreMeter"></span></div>
+                <dl class="metrics">
+                    <div><dt>声核端点</dt><dd id="audcoreEndpoint">—</dd></div>
+                    <div><dt>授权状态</dt><dd id="audcoreAuthorized">—</dd></div>
+                    <div><dt>本机收包</dt><dd id="audcoreMessages">0</dd></div>
+                    <div><dt>最近消息</dt><dd id="audcoreLastMessage">—</dd></div>
+                </dl>
+            </article>
+
+            <div class="direction-arrow">
+                <span>⇄</span>
+                <small>网关转换</small>
+            </div>
+
+            <article class="link-card">
+                <div class="link-title">
+                    <span class="status-dot" id="mobileDot"></span>
+                    <div>
+                        <strong>手机局域网连接</strong>
+                        <small id="mobileStatus">等待状态</small>
+                    </div>
+                </div>
+                <div class="link-meter"><span id="mobileMeter"></span></div>
+                <dl class="metrics">
+                    <div><dt>已连接客户端</dt><dd id="mobileClients">0</dd></div>
+                    <div><dt>已认证客户端</dt><dd id="mobileAuthorized">0</dd></div>
+                    <div><dt>网关端口</dt><dd id="gatewayPort">—</dd></div>
+                    <div><dt>局域网地址</dt><dd id="networkAddresses">—</dd></div>
+                </dl>
+            </article>
+        </section>
+
+        <section class="panel deploy-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">MOBILE DEPLOY</p>
+                    <h2>手机连接部署</h2>
+                    <p class="deploy-help">复制完整地址，在手机 App 的服务器设置中使用。地址已包含网关 token。</p>
+                </div>
+                <div class="deploy-actions">
+                    <button class="copy-button" id="copyConnectionUrl" type="button" disabled>复制连接地址</button>
+                    <button class="copy-button" id="copyGatewayToken" type="button" disabled>复制 Token</button>
+                </div>
+            </div>
+            <div class="deploy-fields">
+                <label class="adapter-field">
+                    <span>网卡 IP</span>
+                    <select id="adapterAddress" aria-label="选择电脑网卡 IP"></select>
+                </label>
+                <label class="connection-field">
+                    <span>完整连接地址</span>
+                    <div class="copy-field">
+                        <input id="connectionUrl" type="text" readonly placeholder="等待网关状态…" aria-label="手机完整连接地址">
+                        <button id="selectConnectionUrl" type="button">全选</button>
+                    </div>
+                </label>
+                <label class="token-field">
+                    <span>网关 Token</span>
+                    <div class="copy-field">
+                        <input id="gatewayToken" type="text" readonly placeholder="等待网关状态…" aria-label="网关 Token">
+                        <button id="selectGatewayToken" type="button">全选</button>
+                    </div>
+                </label>
+            </div>
+            <p class="deploy-note" id="deployNote">选择手机与电脑所在的同一局域网地址；仅列出物理/无线网卡。</p>
+        </section>
+
+        <section class="panel channels-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">CHANNELS</p>
+                    <h2>通道状态</h2>
+                    <p class="deploy-help">来自电脑本机连接的声核通道快照，随声核变化自动刷新；顺序按声核里的显示位置排列。</p>
+                </div>
+                <div class="channels-meta">
+                    <span class="pill" id="channelCount">0 个通道</span>
+                    <span class="pill" id="soloCount">独奏 —</span>
+                </div>
+            </div>
+            <div class="channel-summary" id="channelSummary"><span class="empty-inline">等待通道数据…</span></div>
+            <div class="table-wrap">
+                <table>
+                    <thead><tr><th>顺序</th><th>通道</th><th>状态</th><th>独奏</th><th>音量</th><th>类型</th></tr></thead>
+                    <tbody id="channelRows"><tr><td colspan="6" class="empty">暂无通道数据</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">CLIENTS</p>
+                        <h2>手机客户端</h2>
+                    </div>
+                    <span class="pill" id="clientCount">0</span>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>来源地址</th><th>状态</th><th>收包</th><th>发包</th><th>连接时间</th></tr></thead>
+                        <tbody id="clientRows"><tr><td colspan="5" class="empty">暂无手机连接</td></tr></tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">DIAGNOSTICS</p>
+                        <h2>连接诊断</h2>
+                    </div>
+                    <button class="copy-button" id="copyStatus" type="button">复制状态</button>
+                </div>
+                <div class="diagnostic">
+                    <div class="diagnostic-row"><span>声核连接状态</span><strong id="diagAudcore">—</strong></div>
+                    <div class="diagnostic-row"><span>声核授权状态</span><strong id="diagAuthorization">—</strong></div>
+                    <div class="diagnostic-row"><span>声核订阅数</span><strong id="diagSubscriptions">0</strong></div>
+                    <div class="diagnostic-row"><span>重连次数</span><strong id="diagReconnects">0</strong></div>
+                    <div class="diagnostic-row"><span>最近错误</span><strong id="diagError">无</strong></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">ACTIVITY</p>
+                    <h2>最近事件</h2>
+                </div>
+                <span class="pill" id="logCount">0</span>
+            </div>
+            <div class="log-list" id="logList"><div class="empty">暂无事件</div></div>
+        </section>
+
+        <footer class="footer">
+            <span>本机 API 只在运行声核的电脑上连接；手机通过网关的独立 WebSocket 协议访问受控功能。</span>
+        </footer>
+    </main>
+    <script src="/app.js"></script>
+</body>
+</html>

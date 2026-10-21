@@ -1,0 +1,31 @@
+* text=auto eol=lf
+
+# 源码
+*.kt      text eol=lf
+*.kts     text eol=lf
+*.java    text eol=lf
+*.xml     text eol=lf diff=xml
+*.js      text eol=lf
+*.cjs     text eol=lf
+*.json    text eol=lf
+*.md      text eol=lf
+*.cs      text eol=lf
+*.csproj  text eol=lf diff=xml
+*.ps1     text eol=lf
+*.txt     text eol=lf
+
+# Windows 批处理保持 CRLF
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
+
+# 二进制资源不做任何转换
+*.png     binary
+*.jpg     binary
+*.webp    binary
+*.ico     binary
+*.apk     binary
+*.exe     binary
+*.gz      binary
+
+# GitHub 语言统计
+*.ps1     linguist-language=PowerShell

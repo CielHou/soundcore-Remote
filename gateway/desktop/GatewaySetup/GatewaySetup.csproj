@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>声核网关安装程序</AssemblyName>
+    <RootNamespace>AudcoreGatewaySetup</RootNamespace>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+    <Product>声核网关</Product>
+    <Company>Ciel</Company>
+    <Authors>Ciel</Authors>
+    <AssemblyTitle>声核网关安装程序 1.0.0</AssemblyTitle>
+    <Copyright>© 2026 Ciel（微信 Apple_Hkc）</Copyright>
+    <Description>声核手机遥控电脑网关 · 作者 Ciel · 微信 Apple_Hkc</Description>
+    <Comments>版本 1.0.0 · 手机通过局域网遥控电脑上的声核调音台 · 作者 Ciel · 微信 Apple_Hkc</Comments>
+    <!-- 安装到当前用户 AppData，不需要管理员权限。 -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="app.ico" />
+    <!-- 打包时由 build\build-setup.ps1 生成的 .gz 载荷 -->
+    <EmbeddedResource Include="payload\*.gz">
+      <LogicalName>payload/%(Filename)%(Extension)</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

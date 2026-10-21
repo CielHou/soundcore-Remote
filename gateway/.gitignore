@@ -1,0 +1,32 @@
+# 依赖
+node_modules/
+
+# 运行期配置与凭证（绝不入库）
+.state/
+gateway.config.json
+
+# 生成的资源与打包产物
+src/embedded-assets.js
+publish/
+build/core-base.exe
+build/sea-prep.blob
+build/server.bundle.cjs
+build/aapt-test/
+build/SetupVersionCheck/
+build/*.png
+!build/icon-original.png
+build/*.log
+build/*.lock
+
+# .NET 构建产物
+desktop/GatewayTray/bin/
+desktop/GatewayTray/obj/
+desktop/GatewayTray/publish/
+desktop/GatewaySetup/bin/
+desktop/GatewaySetup/obj/
+desktop/GatewaySetup/payload/
+desktop/**/*.lock
+
+# 备份文件
+*.bak
+使用说明.txt.bak

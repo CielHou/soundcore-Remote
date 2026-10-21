@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- 深色模式：系统切换暗色后自动生效，状态栏/导航栏图标改为浅色。 -->
+    <style name="Theme.AudcoreRemote" parent="Theme.AudcoreRemote.Base">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="ojp">false</item>
+    </style>
+</resources>

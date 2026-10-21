@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 深色模式跟随系统（values-night 自动生效） -->
+    <color name="primary">#BAC3FF</color>
+    <color name="on_primary">#1A2478</color>
+    <color name="primary_container">#303C8F</color>
+    <color name="on_primary_container">#DFE0FF</color>
+    <color name="secondary">#C4C5DD</color>
+    <color name="background">#121318</color>
+    <color name="surface">#16171D</color>
+    <color name="on_surface">#E4E1E9</color>
+    <color name="error">#FFB4AB</color>
+    <color name="pending">#4A3D12</color>
+    <color name="channel_muted_stroke">#2E2F38</color>
+    <color name="channel_active_stroke">#BAC3FF</color>
+    <color name="muted_text">#9A97A5</color>
+    <color name="ab_b">#7FD8C0</color>
+    <color name="surface_variant">#23242B</color>
+    <color name="outline">#46474F</color>
+    <color name="scrim">#000000</color>
+</resources>

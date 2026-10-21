@@ -1,0 +1,22 @@
+{
+  "name": "audcore-lan-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "description": "声核本机授权连接与局域网手机连接之间的 WebSocket 网关",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "postject": "^1.0.0-alpha.6"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "$comment": "把本文件复制为 gateway.config.json 即可固定网关设置；环境变量优先级更高。",
+  "listenPort": 18533,
+  "uiPort": 18534,
+  "clientToken": "audcore-remote-2026",
+  "requireClientToken": true
+}

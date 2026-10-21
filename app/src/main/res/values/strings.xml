@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">声核遥控</string>
+    <string name="app_version">版本 1.0.0</string>
+    <string name="app_author">作者：Ciel</string>
+    <string name="app_contact">微信：Apple_Hkc</string>
+
+    <string name="action_connect">连接</string>
+    <string name="action_disconnect">断开连接</string>
+    <string name="action_forget">清除凭证</string>
+
+    <string name="state_idle">未连接</string>
+    <string name="state_connecting">正在连接…</string>
+    <string name="state_auth_pending">请在声核客户端允许「声核遥控」连接（最多等待 120 秒）</string>
+    <string name="state_ready">已连接，通道状态实时同步</string>
+    <string name="state_reconnecting">连接断开，正在重连…</string>
+    <string name="state_failed">连接失败</string>
+
+    <string name="connect_headline">连接声核</string>
+    <string name="endpoint_format">连接地址：%1$s</string>
+    <string name="open_drawer">打开导航</string>
+    <string name="close_drawer">关闭导航</string>
+    <string name="nav_connect">连接</string>
+    <string name="nav_channels">通道</string>
+    <string name="nav_settings">设置</string>
+    <string name="nav_logs">日志</string>
+    <string name="nav_logs_disabled">请先在设置里打开「显示运行日志」</string>
+    <string name="settings_section_connection">连接</string>
+    <string name="settings_section_behavior">行为</string>
+    <string name="settings_section_about">关于</string>
+    <string name="about_description">手机通过局域网遥控电脑上的声核（AudCore）调音台。</string>
+    <string name="settings_show_logs">显示运行日志</string>
+    <string name="auth_pending_hint">浏览器/系统询问本地网络访问权限时请选择允许；在声核设置的「API 连接管理」中允许本次连接后即可使用。</string>
+
+    <string name="channels_title">通道</string>
+    <string name="empty_channels">还没有通道数据。确认声核已开启本地 API 并允许本应用连接。</string>
+    <string name="empty_all_hidden">所有通道都已隐藏，请进入编辑模式重新显示。</string>
+    <string name="edit_channels">编辑显示</string>
+    <string name="edit_done">完成</string>
+    <string name="back">返回</string>
+    <string name="channel_active">激活</string>
+    <string name="channel_muted">已静音</string>
+    <string name="channel_hidden">已隐藏</string>
+    <string name="gain_format">%1$.1f dB</string>
+
+    <string name="ab_badge_a">A</string>
+    <string name="ab_badge_b">B</string>
+    <string name="ab_slot_a_empty">A 未指定</string>
+    <string name="ab_slot_b_empty">B 未指定</string>
+    <string name="ab_slot_a_format">A · %1$s</string>
+    <string name="ab_slot_b_format">B · %1$s</string>
+    <string name="ab_pick_title_a">选择 A 轨通道</string>
+    <string name="ab_pick_title_b">选择 B 轨通道</string>
+    <string name="ab_assign_a">设为 A 轨</string>
+    <string name="ab_assign_b">设为 B 轨</string>
+    <string name="ab_clear">清除 A/B 设置</string>
+    <string name="ab_assigned_a">已设为 A 轨：%1$s</string>
+    <string name="ab_assigned_b">已设为 B 轨：%1$s</string>
+
+    <string name="disconnect_title">断开连接</string>
+    <string name="disconnect_message">断开后会取消全部实时订阅，应用凭证保留，下次可直接重连。</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_endpoint">本地连接地址</string>
+    <string name="settings_endpoint_hint">默认 ws://127.0.0.1:38533/api/v1</string>
+    <string name="settings_save">保存</string>
+    <string name="settings_saved">已保存</string>
+    <string name="error_invalid_url">地址必须以 ws:// 或 wss:// 开头</string>
+    <string name="settings_local_api_message">声核官方本地 API 文档规定它仅供运行声核的电脑本机使用，不应直接作为局域网服务使用。若手机 App 在电脑桥接后返回 HTTP 403，表示声核主动拒绝来自电脑本机之外的 WebSocket 客户端，而不是防火墙或 Android 问题。请确认声核“API 连接管理”是否允许局域网或远程连接；如果没有该选项，只能在电脑本机使用官网页面或脚本。不要为了绕过限制把端口暴露到公网。</string>
+    <string name="settings_scan_qr">扫码连接</string>
+    <string name="scan_title">扫描网关连接二维码</string>
+    <string name="scan_permission_rationale">扫码连接需要使用相机识别电脑网关页面上的二维码。</string>
+    <string name="camera_permission_denied">无法使用相机，请在系统设置中允许声核遥控使用相机后重试。</string>
+    <string name="scan_qr_invalid">二维码不是有效的声核连接地址</string>
+    <string name="scan_qr_saved">已保存扫描到的连接地址</string>
+    <string name="settings_copy_endpoint">复制连接地址</string>
+    <string name="settings_endpoint_copied">连接地址已复制，可粘贴到电脑浏览器测试</string>
+
+    <string name="forget_title">清除应用凭证</string>
+    <string name="forget_message">清除后下次连接需要在声核客户端重新允许。彻底撤销应用授权请在声核设置中操作。</string>
+    <string name="forget_done">已清除凭证</string>
+
+    <string name="notification_channel_name">连接状态</string>
+
+    <string name="log_title">运行日志</string>
+    <string name="log_empty">暂无运行日志</string>
+    <string name="log_clear">清空日志</string>
+    <string name="log_clear_message">确认删除当前运行日志？下次运行会重新记录。</string>
+    <string name="log_share">复制日志</string>
+    <string name="log_cleared">已清空运行日志</string>
+    <string name="log_copied">日志已复制到剪贴板</string>
+</resources>

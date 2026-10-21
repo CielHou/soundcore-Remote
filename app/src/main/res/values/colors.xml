@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Expressive 风格：靛蓝主色 + 中性表面，浅色模式 -->
+    <color name="primary">#4B57CF</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#DFE0FF</color>
+    <color name="on_primary_container">#131748</color>
+    <color name="secondary">#5B5D72</color>
+    <color name="background">#FBF8FD</color>
+    <color name="surface">#FBF8FD</color>
+    <color name="on_surface">#1B1B21</color>
+    <color name="error">#BA1A1A</color>
+    <color name="pending">#FFF0C9</color>
+    <color name="channel_muted_stroke">#E2E0EA</color>
+    <color name="channel_active_stroke">#4B57CF</color>
+    <color name="muted_text">#7A7887</color>
+    <color name="ab_b">#1F6E5B</color>
+    <color name="surface_variant">#EFEDF4</color>
+    <color name="outline">#C9C7D2</color>
+    <color name="scrim">#1B1B21</color>
+</resources>
